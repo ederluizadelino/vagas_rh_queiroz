@@ -2,11 +2,12 @@ import AppShell from "@/components/AppShell";
 import Header from "@/components/Header";
 import KpiCard from "@/components/KpiCard";
 import DashboardFilters from "@/components/DashboardFilters";
-import { BarChartCard, PieChartCard } from "@/components/ChartCard";
+import { BarChartCard } from "@/components/ChartCard";
 import { prisma } from "@/lib/prisma";
 import { buildKpis, groupByLoja, groupByTipo } from "@/lib/dashboard";
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function DashboardPage({ searchParams }) {
   const filters = { lojaId: searchParams?.lojaId || undefined, tipoVagaId: searchParams?.tipoVagaId || undefined };
@@ -36,8 +37,18 @@ export default async function DashboardPage({ searchParams }) {
         <KpiCard title="Não compareceu" value={kpis.faltas} helper="Agendamentos perdidos" />
       </section>
       <section className="grid gap-6 xl:grid-cols-2">
-        <BarChartCard title="Contratações por empresa" data={chartLojas} />
-        <PieChartCard title="Distribuição por tipo de vaga" data={chartTipos} />
+        <BarChartCard
+          title="Contratações por empresa"
+          data={chartLojas}
+          dataKey="total"
+          layout="horizontal"
+        />
+        <BarChartCard
+          title="Distribuição por tipo de vaga"
+          data={chartTipos}
+          dataKey="total"
+          layout="vertical"
+        />
       </section>
       <section className="table-wrapper"><div className="overflow-x-auto"><table className="min-w-full text-sm"><thead className="bg-zinc-950 text-white"><tr>{["Empresa","Tipo de vaga","Entrevistados","2ª etapa","Aprovados","Contratados","Não compareceu","Observação"].map((header) => <th key={header} className="px-4 py-4 text-left font-semibold">{header}</th>)}</tr></thead><tbody>{vagas.map((item) => <tr key={item.id} className="border-t border-[var(--border)]"><td className="px-4 py-4">{item.loja.nome}</td><td className="px-4 py-4">{item.tipoVaga.nome}</td><td className="px-4 py-4">{item.entrevistados}</td><td className="px-4 py-4">{item.encaminhadosSegundaEtapa}</td><td className="px-4 py-4">{item.aprovados}</td><td className="px-4 py-4">{item.contratados}</td><td className="px-4 py-4">{item.agendamentoNaoComparecido}</td><td className="px-4 py-4 text-zinc-600">{item.observacao || "-"}</td></tr>)}{vagas.length === 0 ? <tr><td className="px-4 py-10 text-center text-zinc-500" colSpan="8">Nenhum dado encontrado para o filtro selecionado.</td></tr> : null}</tbody></table></div></section>
     </AppShell>
