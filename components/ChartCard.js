@@ -22,11 +22,18 @@ function EmptyChart({ message }) {
 export function BarChartCard({
   title,
   data,
-  orientation = "vertical",
+  layout = "horizontal", // Agora ele recebe o layout dinamicamente
+  dataKey = "total",     // Recebe a chave dos valores numéricos
+  xKey = "name",         // Recebe a chave do eixo X
+  yKey = "name",         // Recebe a chave do eixo Y
   emptyMessage = "Nenhum dado para exibir.",
 }) {
   const hasData = Array.isArray(data) && data.length > 0;
-  const isVertical = orientation === "vertical";
+
+  // No Recharts:
+  // layout="horizontal" -> Eixo X é categoria, barras sobem na vertical
+  // layout="vertical" -> Eixo Y é categoria, barras deitam na horizontal
+  const isHorizontalBars = layout === "vertical";
 
   return (
     <div className="panel p-5">
@@ -39,7 +46,7 @@ export function BarChartCard({
           <div
             className="w-full"
             style={{
-              height: isVertical
+              height: !isHorizontalBars
                 ? 320
                 : Math.max(320, data.length * 46),
             }}
@@ -47,9 +54,9 @@ export function BarChartCard({
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={data}
-                layout={isVertical ? "horizontal" : "vertical"}
+                layout={layout}
                 margin={
-                  isVertical
+                  !isHorizontalBars
                     ? { top: 20, right: 20, left: 0, bottom: 60 }
                     : { top: 10, right: 35, left: 10, bottom: 10 }
                 }
@@ -57,10 +64,10 @@ export function BarChartCard({
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3d5dc" />
 
-                {isVertical ? (
+                {!isHorizontalBars ? (
                   <>
                     <XAxis
-                      dataKey="name"
+                      dataKey={xKey}
                       interval={0}
                       angle={-15}
                       textAnchor="end"
@@ -75,7 +82,7 @@ export function BarChartCard({
                     <XAxis type="number" allowDecimals={false} hide />
                     <YAxis
                       type="category"
-                      dataKey="name"
+                      dataKey={yKey}
                       width={160}
                       tick={{ fontSize: 12 }}
                       stroke="#7a5560"
@@ -89,14 +96,14 @@ export function BarChartCard({
                 />
 
                 <Bar
-                  dataKey="total"
+                  dataKey={dataKey}
                   fill="#ef0030"
-                  radius={isVertical ? [10, 10, 0, 0] : [0, 10, 10, 0]}
+                  radius={!isHorizontalBars ? [10, 10, 0, 0] : [0, 10, 10, 0]}
                   maxBarSize={36}
                 >
                   <LabelList
-                    dataKey="total"
-                    position={isVertical ? "top" : "right"}
+                    dataKey={dataKey}
+                    position={!isHorizontalBars ? "top" : "right"}
                     fill="#111827"
                     fontSize={12}
                   />
