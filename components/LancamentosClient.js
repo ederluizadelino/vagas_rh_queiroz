@@ -34,11 +34,14 @@ export default function LancamentosClient({ vagas, lojas, tipos }) {
   function resetForm() { setEditingId(null); setForm(initialForm); }
 
   async function handleSubmit(event) {
-    event.preventDefault();
-    const method = editingId ? "PUT" : "POST";
-    const url = editingId ? `/api/vagas/${editingId}` : "/api/vagas";
-    startTransition(async () => {
-      await fetch(url, {
+  event.preventDefault();
+
+  const method = editingId ? "PUT" : "POST";
+  const url = editingId ? `/api/vagas/${editingId}` : "/api/vagas";
+
+  startTransition(async () => {
+    try {
+      const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -50,9 +53,18 @@ export default function LancamentosClient({ vagas, lojas, tipos }) {
           agendamentoNaoComparecido: Number(form.agendamentoNaoComparecido),
         }),
       });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error || "Erro ao salvar lançamento.");
+      }
+
       window.location.reload();
-    });
-  }
+    } catch (error) {
+      alert(error.message || "Erro ao salvar lançamento.");
+    }
+  });
+}
 
   async function handleDelete(id) {
     if (!window.confirm("Deseja realmente excluir este lançamento?")) return;
