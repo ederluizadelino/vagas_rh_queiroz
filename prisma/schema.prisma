@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Loja {
+  id        String    @id @default(cuid())
+  nome      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  vagas     Vaga[]
+}
+
+model TipoVaga {
+  id        String    @id @default(cuid())
+  nome      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  vagas     Vaga[]
+}
+
+model Vaga {
+  id                           String    @id @default(cuid())
+  lojaId                       String
+  tipoVagaId                   String
+  entrevistados                Int       @default(0)
+  encaminhadosSegundaEtapa     Int       @default(0)
+  aprovados                    Int       @default(0)
+  contratados                  Int       @default(0)
+  observacao                   String?
+  agendamentoNaoComparecido    Int       @default(0)
+  createdAt                    DateTime  @default(now())
+  updatedAt                    DateTime  @updatedAt
+
+  loja                         Loja      @relation(fields: [lojaId], references: [id], onDelete: Restrict)
+  tipoVaga                     TipoVaga  @relation(fields: [tipoVagaId], references: [id], onDelete: Restrict)
+
+  @@index([lojaId])
+  @@index([tipoVagaId])
+}

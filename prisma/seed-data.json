@@ -1,0 +1,152 @@
+[
+  {
+    "empresa": "HQ Nova Betania",
+    "tipoVaga": "Operador(a) de Caixa",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Em processo de documentação",
+    "agendamentoNaoComparecido": 1
+  },
+  {
+    "empresa": "HQ Nova Betania",
+    "tipoVaga": "Operador(a) de Caixa Parcial",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Em processo de documentação",
+    "agendamentoNaoComparecido": 1
+  },
+  {
+    "empresa": "HQ Nova Betania",
+    "tipoVaga": "Repositor de Frios",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Em processo de documentação",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "HQ Nova Betania",
+    "tipoVaga": "Repositor de Horti",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Em processo de documentação",
+    "agendamentoNaoComparecido": 1
+  },
+  {
+    "empresa": "HQ Nova Betania",
+    "tipoVaga": "Repositor de Horti",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Industria de Carne",
+    "tipoVaga": "Auxiliar de Açougue",
+    "entrevistados": 1,
+    "encaminhadosSegundaEtapa": 1,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Não compareceu a segunda etapa",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "HQ Caraúbas",
+    "tipoVaga": "Operador de Loja Parcial",
+    "entrevistados": 2,
+    "encaminhadosSegundaEtapa": 1,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "1 sem perfil",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Hq Boa Vista",
+    "tipoVaga": "ASG",
+    "entrevistados": 1,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Em processo de documentação",
+    "agendamentoNaoComparecido": 3
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Auxiliar de cozinha",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Aguardando colaboradora ser desligada",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Aprendiz",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Aprendiz",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Balconista de frios",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Candidata desistiu",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Operador de loja (televendas)",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Queiroz Atacadão Mossoró",
+    "tipoVaga": "Assistente de Rh",
+    "entrevistados": 2,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Ver necessidade de Case",
+    "agendamentoNaoComparecido": 0
+  },
+  {
+    "empresa": "Cerealista Queiroz",
+    "tipoVaga": "Vendedor interno",
+    "entrevistados": 0,
+    "encaminhadosSegundaEtapa": 0,
+    "aprovados": 0,
+    "contratados": 0,
+    "observacao": "Colaborador de aviso",
+    "agendamentoNaoComparecido": 0
+  }
+]

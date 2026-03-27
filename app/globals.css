@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff8fb;
+  --foreground: #161616;
+  --muted: #ffe8f0;
+  --primary: #ef0030;
+  --border: #f2cad5;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: radial-gradient(circle at top left, rgba(239,0,48,0.08), transparent 28%), radial-gradient(circle at top right, rgba(0,0,0,0.05), transparent 18%), var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+.container-shell { @apply mx-auto flex min-h-screen max-w-7xl gap-6 px-4 py-4 md:px-6; }
+.sidebar-link { @apply flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-zinc-700 transition hover:bg-white hover:text-[var(--primary)] hover:shadow-sm; }
+.sidebar-link-active { @apply bg-white text-[var(--primary)] shadow-sm; }
+.panel { @apply rounded-[28px] border border-[var(--border)] bg-white/90 shadow-[0_20px_60px_rgba(239,0,48,0.08)] backdrop-blur; }
+.input { @apply w-full rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-[var(--primary)] focus:ring-2 focus:ring-[color:rgba(239,0,48,0.15)]; }
+.label { @apply mb-2 block text-sm font-semibold text-zinc-700; }
+.btn-primary { @apply inline-flex items-center justify-center rounded-2xl bg-[var(--primary)] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-95; }
+.btn-secondary { @apply inline-flex items-center justify-center rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-sm font-semibold text-zinc-800 transition hover:border-[var(--primary)] hover:text-[var(--primary)]; }
+.badge { @apply inline-flex rounded-full bg-[var(--muted)] px-3 py-1 text-xs font-semibold text-[var(--primary)]; }
+.table-wrapper { @apply overflow-hidden rounded-[28px] border border-[var(--border)] bg-white; }
