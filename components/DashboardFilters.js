@@ -1,38 +1,24 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-
-export default function DashboardFilters({ lojas, tipos }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const lojaId = searchParams.get("lojaId") || "";
-  const tipoVagaId = searchParams.get("tipoVagaId") || "";
-
-  function updateParam(key, value) {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (value) {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-    }
-
-    const query = params.toString();
-    const url = query ? `/dashboard?${query}` : "/dashboard";
-
-    router.replace(url);
-    router.refresh();
-  }
-
+export default function DashboardFilters({
+  lojas,
+  tipos,
+  selectedLojaId = "",
+  selectedTipoVagaId = "",
+}) {
   return (
-    <div className="panel grid gap-4 p-5 md:grid-cols-2">
+    <form
+      action="/dashboard"
+      method="GET"
+      className="panel grid gap-4 p-5 md:grid-cols-[1fr_1fr_auto]"
+    >
       <div>
         <label className="label">Empresa</label>
         <select
+          name="lojaId"
           className="input"
-          value={lojaId}
-          onChange={(e) => updateParam("lojaId", e.target.value)}
+          defaultValue={selectedLojaId}
+          onChange={(e) => e.currentTarget.form.requestSubmit()}
         >
           <option value="">Todas as empresas</option>
           {lojas.map((loja) => (
@@ -46,9 +32,10 @@ export default function DashboardFilters({ lojas, tipos }) {
       <div>
         <label className="label">Tipo de vaga</label>
         <select
+          name="tipoVagaId"
           className="input"
-          value={tipoVagaId}
-          onChange={(e) => updateParam("tipoVagaId", e.target.value)}
+          defaultValue={selectedTipoVagaId}
+          onChange={(e) => e.currentTarget.form.requestSubmit()}
         >
           <option value="">Todos os tipos</option>
           {tipos.map((tipo) => (
@@ -58,6 +45,15 @@ export default function DashboardFilters({ lojas, tipos }) {
           ))}
         </select>
       </div>
-    </div>
+
+      <div className="flex items-end">
+        <a
+          href="/dashboard"
+          className="inline-flex h-11 items-center justify-center rounded-xl border border-[var(--border)] px-4 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50"
+        >
+          Limpar filtros
+        </a>
+      </div>
+    </form>
   );
 }
