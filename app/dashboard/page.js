@@ -67,7 +67,7 @@ export default async function DashboardPage({ searchParams }) {
           data={chartLojas}
           dataKey="total"
           layout="horizontal"
-          xKey="nome"
+          xKey="name"
         />
 
         <BarChartCard
@@ -75,7 +75,7 @@ export default async function DashboardPage({ searchParams }) {
           data={chartTipos}
           dataKey="total"
           layout="vertical"
-          yKey="nome"
+          yKey="name"
         />
       </section>
 
