@@ -22,17 +22,13 @@ function EmptyChart({ message }) {
 export function BarChartCard({
   title,
   data,
-  layout = "horizontal", // Agora ele recebe o layout dinamicamente
-  dataKey = "total",     // Recebe a chave dos valores numéricos
-  xKey = "name",         // Recebe a chave do eixo X
-  yKey = "name",         // Recebe a chave do eixo Y
+  layout = "horizontal",
+  dataKey = "total",
+  xKey = "name",
+  yKey = "name",
   emptyMessage = "Nenhum dado para exibir.",
 }) {
   const hasData = Array.isArray(data) && data.length > 0;
-
-  // No Recharts:
-  // layout="horizontal" -> Eixo X é categoria, barras sobem na vertical
-  // layout="vertical" -> Eixo Y é categoria, barras deitam na horizontal
   const isHorizontalBars = layout === "vertical";
 
   return (
@@ -64,35 +60,41 @@ export function BarChartCard({
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3d5dc" />
 
-                {!isHorizontalBars ? (
-                  <>
-                    <XAxis
-                      type="category"
-                      dataKey={xKey}
-                      interval={0}
-                      angle={-15}
-                      textAnchor="end"
-                      height={70}
-                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
-                      stroke="#7a5560"
-                    />
-                    <YAxis 
-                      allowDecimals={false} 
-                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
-                      stroke="#7a5560" 
-                    />
-                  </>
-                ) : (
-                  <>
-                    <XAxis type="number" allowDecimals={false} hide />
-                    <YAxis
-                      type="category"
-                      dataKey={yKey}
-                      width={160}
-                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
-                      stroke="#7a5560"
-                    />
-                  </>
+                {/* Eixos renderizados DIRETAMENTE, sem <></> */}
+                
+                {/* 1. Eixos para o gráfico de barras em PÉ */}
+                {!isHorizontalBars && (
+                  <XAxis
+                    type="category"
+                    dataKey={xKey}
+                    interval={0}
+                    angle={-15}
+                    textAnchor="end"
+                    height={70}
+                    tick={{ fontSize: 12, fill: "#7a5560" }}
+                    stroke="#7a5560"
+                  />
+                )}
+                {!isHorizontalBars && (
+                  <YAxis 
+                    allowDecimals={false} 
+                    tick={{ fontSize: 12, fill: "#7a5560" }} 
+                    stroke="#7a5560" 
+                  />
+                )}
+
+                {/* 2. Eixos para o gráfico de barras DEITADAS */}
+                {isHorizontalBars && (
+                  <XAxis type="number" allowDecimals={false} hide />
+                )}
+                {isHorizontalBars && (
+                  <YAxis
+                    type="category"
+                    dataKey={yKey}
+                    width={160}
+                    tick={{ fontSize: 12, fill: "#7a5560" }}
+                    stroke="#7a5560"
+                  />
                 )}
 
                 <Tooltip
