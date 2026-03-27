@@ -67,15 +67,20 @@ export function BarChartCard({
                 {!isHorizontalBars ? (
                   <>
                     <XAxis
+                      type="category"
                       dataKey={xKey}
                       interval={0}
                       angle={-15}
                       textAnchor="end"
                       height={70}
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
                       stroke="#7a5560"
                     />
-                    <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="#7a5560" />
+                    <YAxis 
+                      allowDecimals={false} 
+                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
+                      stroke="#7a5560" 
+                    />
                   </>
                 ) : (
                   <>
@@ -84,7 +89,7 @@ export function BarChartCard({
                       type="category"
                       dataKey={yKey}
                       width={160}
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 12, fill: "#7a5560" }} // fill adicionado!
                       stroke="#7a5560"
                     />
                   </>
